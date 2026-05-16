@@ -2,13 +2,14 @@
 
 ## 1. Executive Summary
 
-This analysis identifies key risk factors associated with loan defaults by segmenting borrowers across multiple dimensions including credit scores, debt-to-income ratios, loan purposes, and employment status. 
+This analysis identifies key risk factors associated with loan defaults by segmenting borrowers across multiple dimensions including credit scores, debt-to-income ratios, loan purposes, and employment status. Using comprehensive Power BI visualizations and SQL-based analytics, we provide data-driven insights to support lending decisions and portfolio management strategies.
 
 ### Business Impact:
 - **Identified lowest-risk borrower profile:** Credit Score >800, DTI <20%, Medical Expenses loan purpose, and Contract employment status
 - **Risk Segmentation:** Categorized borrowers into 5 risk tiers across 4 key dimensions
 - **Data-Driven Insights:** Enabled lenders to make informed approval decisions based on borrower risk profiles
 - **Decision Support:** Created actionable risk metrics to guide lending policy and underwriting criteria
+- **Comprehensive Dashboards:** Developed interactive Power BI visualizations for real-time risk monitoring
 
 ### Key Next Steps:
 1. Implement risk-based pricing models based on identified segments
@@ -52,12 +53,15 @@ By analyzing historical loan data across multiple risk dimensions, this project 
 ### Data Source:
 - **Source:** Analyst Builder.com
 - **Data Coverage:** Historical loan application and borrower profile data
-- **Dataset Composition:** Loan applications and corresponding borrower demographics, credit, and employment information
+- **Dataset Composition:** 
+  - **Loan Applications:** `loan_applications.csv` - Contains loan request details, application status, and default indicators
+  - **Borrower Profiles:** `borrower_profiles.csv` - Contains demographic, credit, and employment information
 
 ### Tools & Technologies:
 - **BigQuery:** Cloud data warehousing and SQL query execution
 - **SQL:** Data extraction, transformation, and aggregation
 - **Power BI:** Data visualization and business intelligence dashboards
+- **CSV Data Files:** Standardized data format for analysis and integration
 
 ### Analysis Approach:
 
@@ -166,16 +170,65 @@ By analyzing historical loan data across multiple risk dimensions, this project 
 
 ```
 Loan-Default-Risk-Analysis/
-├── loan_analysis_queries.sql    # Main SQL queries and views
-├── README.md                     # Project documentation (this file)
-└── [Power BI Dashboards]        # Business intelligence visualizations
+├── README.md                         # Project documentation (this file)
+├── loan_analysis_queries.sql         # Main SQL queries and analytical views
+├── loan_applications.csv             # Loan application data (50 KB)
+│   ├── Contains: Application IDs, Loan Amounts, Purposes, Default Status, etc.
+│   └── Records: Historical loan request information
+├── borrower_profiles.csv             # Borrower demographic & credit data (31 KB)
+│   ├── Contains: Credit Scores, DTI Ratios, Employment Status, Demographics
+│   └── Records: Borrower profile information linked to applications
+└── visual.png                        # Power BI Dashboard Visualization
+    └── Comprehensive dashboard showing default rates, risk segments, and key metrics
 ```
+
+### File Descriptions:
+
+| File | Size | Purpose | Key Content |
+|------|------|---------|------------|
+| **loan_applications.csv** | 50 KB | Loan request details | Application IDs, loan amounts, purposes, approval status, default indicators |
+| **borrower_profiles.csv** | 31 KB | Borrower information | Credit scores, DTI ratios, employment status, income, demographics |
+| **loan_analysis_queries.sql** | 5 KB | SQL analytics | Queries for segment analysis, default rate calculations, risk metrics |
+| **visual.png** | 40 KB | Power BI Dashboard | Interactive visualizations of default rates, risk segments, and comparative analytics |
+
+---
 
 ## 🔧 How to Use
 
-1. **Access the SQL Queries:** Review `loan_analysis_queries.sql` for analysis methodology
-2. **View Dashboards:** Open Power BI dashboards for interactive visualization
-3. **Replicate Analysis:** Execute SQL queries in BigQuery with your dataset
+### 1. **Data Analysis:**
+   - Review `borrower_profiles.csv` and `loan_applications.csv` for raw data structure
+   - Load datasets into your preferred analytics platform (BigQuery, Excel, Python, etc.)
+
+### 2. **SQL Analysis:**
+   - Access `loan_analysis_queries.sql` for analysis methodology
+   - Execute queries in BigQuery with your dataset
+   - Modify queries for your specific lending criteria and risk thresholds
+
+### 3. **Visualizations:**
+   - View `visual.png` to see the Power BI dashboard layout and key metrics
+   - Replicate visualizations in Power BI, Tableau, or your preferred BI tool
+   - Use the dashboard for stakeholder communication and decision support
+
+### 4. **Replication Steps:**
+   ```
+   1. Load loan_applications.csv and borrower_profiles.csv into BigQuery
+   2. Execute queries from loan_analysis_queries.sql
+   3. Connect Power BI to query results
+   4. Create dashboard based on visual.png design
+   5. Integrate with lending approval workflows
+   ```
+
+---
+
+## 📊 Power BI Dashboard - Key Visualizations
+
+The `visual.png` dashboard includes:
+- **Default Rate by Credit Score:** Shows inverse relationship between credit quality and default risk
+- **Default Rate by DTI Ratio:** Demonstrates impact of debt burden on loan performance
+- **Default Rate by Employment Status:** Compares default rates across employment categories
+- **Default Rate by Loan Purpose:** Highlights purpose-based risk variations
+- **Risk Segment Summary:** Consolidated view of identified risk tiers
+- **Comparative Analysis:** Side-by-side comparison of key risk dimensions
 
 ---
 
@@ -190,11 +243,48 @@ Loan-Default-Risk-Analysis/
 
 ---
 
+## 📊 Data Summary Statistics
+
+### Loan Applications Dataset:
+- **Total Records:** Historical loan applications
+- **Key Fields:** Application ID, Loan Amount, Purpose, Default Status, Approval Status
+- **Analysis Period:** Historical data covering multiple loan cycles
+
+### Borrower Profiles Dataset:
+- **Total Records:** Unique borrower profiles
+- **Key Fields:** Credit Score, DTI Ratio, Employment Status, Income, Demographic Information
+- **Coverage:** Complete borrower profile information
+
+---
+
+## 💡 Quick Insights from Dashboard
+
+Based on the Power BI visualizations (`visual.png`):
+- **Exceptional Credit Scores** show significantly lower default rates
+- **Low DTI Ratios (<20%)** correlate with improved loan performance
+- **Medical Expense Loans** demonstrate favorable default characteristics
+- **Contract Employment** shows the most predictable repayment patterns
+- **Risk Stratification** is clearly visible across all four dimensions
+
+---
+
 ## 📞 Contact & Questions
 
-For questions or further analysis, please contact the project team or refer to the SQL documentation for implementation details.
+For questions or further analysis, please refer to:
+- **SQL Documentation:** See comments in `loan_analysis_queries.sql`
+- **Data Dictionary:** Review column descriptions in CSV headers
+- **Dashboard Insights:** Refer to `visual.png` for visualization details
+
+---
+
+## 🔗 Related Resources
+
+- [BigQuery Documentation](https://cloud.google.com/bigquery/docs)
+- [Power BI Documentation](https://docs.microsoft.com/en-us/power-bi/)
+- [Data Analysis Best Practices](https://www.analyst-builder.com/)
 
 ---
 
 **Last Updated:** May 16, 2026  
-**Status:** Analysis Complete | Ready for Implementation
+**Status:** Analysis Complete | Ready for Implementation  
+**Files Included:** CSV Data, SQL Queries, Power BI Visualization, Documentation
